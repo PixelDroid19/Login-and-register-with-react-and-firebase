@@ -27,6 +27,7 @@ function App() {
     const auth = getAuth();
     onAuthStateChanged(auth, user => {
       setUser(user)
+      console.log(user)
     })
   }, [])
 

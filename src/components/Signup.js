@@ -13,6 +13,7 @@ const Swal = require('sweetalert2')
 
 
 const Signup = ({ history }) => {
+    const [Username, setUsername] = useState("")
     const [ name, setName ] = useState("");
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
@@ -29,7 +30,6 @@ const Signup = ({ history }) => {
     const onSignup = () => {
         setLoading(true);
         const auth = getAuth();
-
         createUserWithEmailAndPassword(auth, email, password)
             .then(() => {
                 updateProfile(auth.currentUser, { displayName: name })
@@ -61,6 +61,17 @@ const Signup = ({ history }) => {
                         type="name"
                     />
                 </div>
+
+                <div className="m-5">
+                    <label className="block text-xl font-bold mb-2">Username</label>
+                    <InputCustom
+                        value={Username}
+                        onChange={e => setUsername(HandlerInput(e))}
+                        name="Username"
+                        type="Username"
+                    />
+                </div>
+
                 <div className="m-5">
                     <label className="block text-xl font-bold mb-2">Email</label>
                     <InputCustom
